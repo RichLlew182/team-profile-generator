@@ -12,3 +12,11 @@ const render = require("./src/page-template.js");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
+
+const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew182');
+
+newEngineer.getRole()
+
+const newManager = new Manager('Katie', '3456', 'katie@gmail.com', 'KFu');
+
+newManager.getRole()
