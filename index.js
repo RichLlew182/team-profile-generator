@@ -19,8 +19,20 @@ newEngineer.printInfo()
 
 const newManager = new Manager('Katie', '3456', 'katie@gmail.com', '0208 1234 5678');
 
-newManager.printInfo()
+newManager.printInfo();
+newManager.getRole();
 
 const newIntern = new Intern('Michael', '9998', 'michael@gmail.com', 'Llangatwg Comprehensive School');
 
-newIntern.printInfo()
+console.log(newIntern.printInfo());
+
+// console.log(outputPath);
+// console.log(OUTPUT_DIR)
+
+// fs.writeFile(outputPath, (render()), (err) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('Success!')
+//   }
+// })
