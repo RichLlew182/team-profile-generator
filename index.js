@@ -15,8 +15,12 @@ const render = require("./src/page-template.js");
 
 const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew182');
 
-newEngineer.getRole()
+newEngineer.printInfo()
 
-const newManager = new Manager('Katie', '3456', 'katie@gmail.com', 'KFu');
+const newManager = new Manager('Katie', '3456', 'katie@gmail.com', '0208 1234 5678');
 
-newManager.getRole()
+newManager.printInfo()
+
+const newIntern = new Intern('Michael', '9998', 'michael@gmail.com', 'Llangatwg Comprehensive School');
+
+newIntern.printInfo()
