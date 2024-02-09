@@ -13,28 +13,20 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-// engineer.printInfo()
-// manager.printInfo();
-// intern.printInfo();
-
-// console.log(outputPath);
-// console.log(OUTPUT_DIR)
-
-// fs.writeFile(outputPath, (render()), (err) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log('Success!')
-//   }
-// })
-
-
 const newEmployee = new Employee('Name', 'id', 'email')
 const newIntern = new Intern('Michael', '9998', 'michael@gmail.com', 'Llangatwg Comprehensive School');
 const newManager = new Manager('Katie', '3456', 'katie@gmail.com', '0208 1234 5678');
 const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew182');
 
-newEmployee.printInfo();
 newManager.printInfo();
-newEngineer.printInfo();
-newIntern.printInfo();
+console.log(newManager.getRole())
+
+render(newManager)
+
+fs.writeFile(outputPath, (render(newManager)), (err) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('Success!')
+  }
+})

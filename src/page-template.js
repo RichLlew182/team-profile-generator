@@ -70,7 +70,7 @@ const generateTeam = team => {
         .join("")
     );
     html.push(team
-        .filter(employee => Employee.getRole() === "Intern")
+        .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateIntern(intern))
         .join("")
     );
