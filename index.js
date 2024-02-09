@@ -21,12 +21,12 @@ const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew1
 newManager.printInfo();
 console.log(newManager.getRole())
 
-render(newManager)
+// render(newManager)
 
-fs.writeFile(outputPath, (render(newManager)), (err) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('Success!')
-  }
-})
+// fs.writeFile(outputPath, (render(newManager)), (err) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('Success!')
+//   }
+// })
