@@ -2,7 +2,7 @@ const Employee = require('./lib/Employee.js')
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const inquirer = import("inquirer");
+const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
@@ -30,3 +30,23 @@ console.log(newManager.getRole())
 //     console.log('Success!')
 //   }
 // })
+
+const questions = [{
+  type: 'input',
+  message: 'Question 1?',
+  name: 'title',
+  validate: (input) => {
+    // If the input is an empty string, alert that user must enter a title
+    return input !== '' ? true : 'You must enter a title of your project';
+  }
+}, ];
+
+function init() {
+
+  inquirer.prompt(questions)
+    .then((response =>
+      response ? console.log(response) : console.log(err)))
+
+}
+
+init();
