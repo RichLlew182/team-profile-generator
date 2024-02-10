@@ -13,14 +13,7 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-// newManager.printInfo();
-// console.log(newManager.getRole())
-
 const team = [];
-
-// const team = [newManager, newEngineer, newIntern, newEmployee]
-
-// console.log(team)
 
 function writeToFile(team) {
 
@@ -33,27 +26,6 @@ function writeToFile(team) {
   })
 
 }
-
-function init() {
-
-  inquirer.prompt(questions)
-    .then(answers => {
-
-      // const newEmployee = new Employee('Name', 'id', 'email')
-      // const newManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
-      // const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
-      // const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-
-      // const team = [];
-      // team.push(newManager, newEngineer, newIntern)
-
-      writeToFile(team)
-
-    })
-
-}
-
-// init();
 
 const managerQsArray = [{
     type: 'input',
@@ -116,7 +88,7 @@ function chooseOptions() {
 
       } else {
         // end questions and generate team
-        console.log('Questions over, generating team')
+        console.log('Building team...')
         console.log(team)
         writeToFile(team)
       }
@@ -133,6 +105,7 @@ function managerQuestions() {
 
       const newManager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.officeNumber);
 
+      console.log('--------------------')
       console.log('Manager Added');
       console.log('--------------------')
 
@@ -176,7 +149,8 @@ function engineerQuestions() {
       // create new Engineer class with answers
 
       const newEngineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.engineerGitHub);
-      // console.log(newEngineer)
+
+      console.log('--------------------')
       console.log('New Engineer Created')
       console.log('--------------------')
 
@@ -224,6 +198,7 @@ function internQuestions() {
 
       const newIntern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool);
 
+      console.log('--------------------')
       console.log('Intern Added');
       console.log('--------------------')
 
