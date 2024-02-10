@@ -66,7 +66,7 @@ const managerQsArray = [{
 
 ]
 
-const pickOptions = {
+const options = {
   type: 'list',
   message: 'What do you want to do?',
   name: 'nextStep',
@@ -74,7 +74,7 @@ const pickOptions = {
 }
 
 function chooseOptions() {
-  inquirer.prompt(pickOptions)
+  inquirer.prompt(options)
     .then(optionAnswer => {
       if (optionAnswer.nextStep === 'Add an Engineer') {
 
@@ -89,7 +89,7 @@ function chooseOptions() {
       } else {
         // end questions and generate team
         console.log('Building team...')
-        console.log(team)
+        // console.log(team)
         writeToFile(team)
       }
     })
@@ -199,7 +199,7 @@ function internQuestions() {
       const newIntern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool);
 
       console.log('--------------------')
-      console.log('Intern Added');
+      console.log('New Intern Created');
       console.log('--------------------')
 
       // Push new Engineer to team array

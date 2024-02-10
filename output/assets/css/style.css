@@ -1,0 +1,19 @@
+.jumbotron {
+  background: red;
+  color: white;
+  margin-bottom: 0;
+}
+
+.team-area {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.Employee-card {
+  min-width: 300px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
+  max-width: 33.3333333%;
+}
