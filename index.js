@@ -16,13 +16,11 @@ const render = require("./src/page-template.js");
 // newManager.printInfo();
 // console.log(newManager.getRole())
 
-
 const team = [];
 
 // const team = [newManager, newEngineer, newIntern, newEmployee]
 
 // console.log(team)
-
 
 function writeToFile(team) {
 
@@ -120,6 +118,7 @@ function chooseOptions() {
         // end questions and generate team
         console.log('Questions over, generating team')
         console.log(team)
+        writeToFile(team)
       }
     })
 
@@ -138,7 +137,7 @@ function managerQuestions() {
       console.log('--------------------')
 
       // Push new Engineer to team array
-      team.push(JSON.stringify(newManager));
+      team.push(newManager);
 
       // call function to start chooseOptions inquirer
       chooseOptions();
@@ -182,7 +181,7 @@ function engineerQuestions() {
       console.log('--------------------')
 
       // Push new Engineer to team array
-      team.push(JSON.stringify(newEngineer));
+      team.push(newEngineer);
 
       // call function to start chooseOptions inquirer
       chooseOptions();
@@ -229,7 +228,7 @@ function internQuestions() {
       console.log('--------------------')
 
       // Push new Engineer to team array
-      team.push(JSON.stringify(newIntern));
+      team.push(newIntern);
 
       // call function to start chooseOptions inquirer
       chooseOptions();
