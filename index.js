@@ -151,7 +151,7 @@ function init() {
     .then(answers => {
 
       // const newEmployee = new Employee('Name', 'id', 'email')
-      const newManager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.officeNumber);
+      const newManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
       const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
       const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
 
