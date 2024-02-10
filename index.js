@@ -19,44 +19,6 @@ const render = require("./src/page-template.js");
 
 const team = [];
 
-const questions = [
-
-  {
-    type: 'input',
-    message: `Please add the Intern's name`,
-    name: 'internName',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Intern'
-    },
-  },
-  {
-    type: 'input',
-    message: `Please add the Intern's ID`,
-    name: 'internId',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Intern'
-    },
-  },
-  {
-    type: 'input',
-    message: `Please add the Intern's email address`,
-    name: 'internEmail',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Intern'
-    },
-  },
-  {
-    type: 'input',
-    message: `Please add the Intern's School`,
-    name: 'internSchool',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Intern'
-    },
-  },
-
-];
-
-
 // const team = [newManager, newEngineer, newIntern, newEmployee]
 
 // console.log(team)
@@ -82,9 +44,9 @@ function init() {
       // const newEmployee = new Employee('Name', 'id', 'email')
       // const newManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
       // const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
-      const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+      // const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
 
-      const team = [];
+      // const team = [];
       // team.push(newManager, newEngineer, newIntern)
 
       writeToFile(team)
@@ -145,17 +107,19 @@ function chooseOptions() {
   inquirer.prompt(pickOptions)
     .then(optionAnswer => {
       if (optionAnswer.nextStep === 'Add an Engineer') {
+
         // calls Engineer questions function
         engineerQuestions()
 
       } else if (optionAnswer.nextStep === 'Add an Intern') {
-        // Ask Intern questions
-        // Create New Intern Class
-        // call chooseOptions function again to ask about more team members
-        console.log('New Intern Created')
+
+        // calls Intern questions function
+        internQuestions()
+
       } else {
         // end questions and generate team
         console.log('Questions over, generating team')
+        console.log(team)
       }
     })
 
@@ -175,9 +139,8 @@ function managerQuestions() {
 
       // Push new Engineer to team array
       team.push(JSON.stringify(newManager));
-      console.log('Team so far: ' + team)
-      // call function to start chooseOptions inquirer
 
+      // call function to start chooseOptions inquirer
       chooseOptions();
 
     })
@@ -220,16 +183,59 @@ function engineerQuestions() {
 
       // Push new Engineer to team array
       team.push(JSON.stringify(newEngineer));
-      console.log('Team so far: ' + team)
 
       // call function to start chooseOptions inquirer
-
       chooseOptions();
 
     })
 
 }
 
+const internQsArray = [
 
+  {
+    type: 'input',
+    message: `Please add the Intern's name`,
+    name: 'internName',
+  },
+  {
+    type: 'input',
+    message: `Please add the Intern's ID`,
+    name: 'internId',
+  },
+  {
+    type: 'input',
+    message: `Please add the Intern's email address`,
+    name: 'internEmail',
+  },
+  {
+    type: 'input',
+    message: `Please add the Intern's School`,
+    name: 'internSchool',
+  },
+
+];
+
+function internQuestions() {
+
+  inquirer.prompt(internQsArray)
+    .then(internAnswers => {
+
+      // create new Manager class with answers
+
+      const newIntern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool);
+
+      console.log('Intern Added');
+      console.log('--------------------')
+
+      // Push new Engineer to team array
+      team.push(JSON.stringify(newIntern));
+
+      // call function to start chooseOptions inquirer
+      chooseOptions();
+
+    })
+
+}
 
 managerQuestions()
