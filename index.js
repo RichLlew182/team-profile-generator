@@ -26,13 +26,13 @@ const team = [newManager, newEngineer, newIntern, newEmployee]
 console.log(team)
 
 
-fs.writeFile(outputPath, (render(team)), (err) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('Success!')
-  }
-})
+// fs.writeFile(outputPath, (render(team)), (err) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('Success!')
+//   }
+// })
 
 
 const questions = [{
@@ -48,17 +48,82 @@ const questions = [{
     type: 'list',
     message: 'What do you want to do?',
     name: 'nextStep',
-    choices: ['Add Engineer', 'Add an Intern', 'Finish Building the team']
+    choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's name`,
+    name: 'engineerName',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Engineer'
+    },
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's ID`,
+    name: 'engineerId',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Engineer'
+    },
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's email address`,
+    name: 'engineerEmail',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Engineer'
+    },
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's GitHub username`,
+    name: 'engineerGitHub',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Engineer'
+    },
+  },
+
+  {
+    type: 'input',
+    message: `Please add the Intern's name`,
+    name: 'internName',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Intern'
+    },
+  },
+  {
+    type: 'input',
+    message: `Please add the Intern's ID`,
+    name: 'internId',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Intern'
+    },
+  },
+  {
+    type: 'input',
+    message: `Please add the Intern's email address`,
+    name: 'internEmail',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Intern'
+    },
+  },
+  {
+    type: 'input',
+    message: `Please add the Intern's School`,
+    name: 'internSchool',
+    when: (answers) => {
+      return answers.nextStep === 'Add an Intern'
+    },
   },
 
 ];
 
-// function init() {
+function init() {
 
-//   inquirer.prompt(questions)
-//     .then((response =>
-//       response ? console.log(response) : console.log(err)))
+  inquirer.prompt(questions)
+    .then((response =>
+      response ? console.log(response) : console.log(err)))
 
-// }
+}
 
-// init();
+init();
