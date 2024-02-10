@@ -152,7 +152,7 @@ function init() {
     .then(answers => {
 
       // const newEmployee = new Employee('Name', 'id', 'email')
-      const newManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
+      // const newManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
       const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
       const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
 
@@ -167,7 +167,7 @@ function init() {
 
 // init();
 
-const managerQuestions = [{
+const managerQsArray = [{
     type: 'input',
     message: `Manager Name:`,
     name: 'managerName',
@@ -217,9 +217,14 @@ function chooseOptions() {
   inquirer.prompt(pickOptions)
     .then(optionAnswer => {
       if (optionAnswer.nextStep === 'Add an Engineer') {
-        // Create new Engineer
+        // Ask Engineer questions
+        // Create New Engineer Class
+        // call chooseOptions function again to ask about more team members
         console.log('New Engineer Created')
       } else if (optionAnswer.nextStep === 'Add an Intern') {
+        // Ask Intern questions
+        // Create New Intern Class
+        // call chooseOptions function again to ask about more team members
         console.log('New Intern Created')
       } else {
         // end questions and generate team
@@ -229,4 +234,25 @@ function chooseOptions() {
 
 }
 
-chooseOptions();
+function managerQuestions() {
+
+  inquirer.prompt(managerQsArray)
+    .then(managerAnswers => {
+
+      // create new Manager class with answers
+
+      const newManager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.officeNumber);
+
+      console.log(newManager)
+
+      // call function to start chooseOptions inquirer
+
+      chooseOptions();
+
+    })
+
+}
+
+managerQuestions()
+
+// chooseOptions();
