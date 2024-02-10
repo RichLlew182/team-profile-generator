@@ -21,32 +21,44 @@ const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew1
 newManager.printInfo();
 console.log(newManager.getRole())
 
-// render(newManager)
+const team = [newManager, newEngineer, newEmployee, newEmployee]
 
-// fs.writeFile(outputPath, (render(newManager)), (err) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log('Success!')
-//   }
-// })
+console.log(team)
+
+
+fs.writeFile(outputPath, (render(team)), (err) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('Success!')
+  }
+})
+
 
 const questions = [{
-  type: 'input',
-  message: 'Question 1?',
-  name: 'title',
-  validate: (input) => {
-    // If the input is an empty string, alert that user must enter a title
-    return input !== '' ? true : 'You must enter a title of your project';
-  }
-}, ];
+    type: 'input',
+    message: `Please enter your managers name`,
+    name: 'managerName',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your manager's name `;
+    }
+  },
+  {
+    type: 'list',
+    message: 'What do you want to do?',
+    name: 'nextStep',
+    choices: ['Add Engineer', 'Add an Intern', 'Finish Building the team']
+  },
 
-function init() {
+];
 
-  inquirer.prompt(questions)
-    .then((response =>
-      response ? console.log(response) : console.log(err)))
+// function init() {
 
-}
+//   inquirer.prompt(questions)
+//     .then((response =>
+//       response ? console.log(response) : console.log(err)))
 
-init();
+// }
+
+// init();
