@@ -20,7 +20,7 @@ function writeToFile(team) {
     if (err) {
       console.log(err)
     } else {
-      console.log('Success!')
+      console.log('Team build successful! Please open team.html in your browser to view all team members.')
     }
   })
 
@@ -40,9 +40,12 @@ const managerQsArray = [{
     message: `Manager employee ID number: `,
     name: 'managerId',
     validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an employee number
       if (input === '') {
         return `You must enter your employee ID number `;
       }
+      // check that employee ID is only made of numbers
       if (!/^\d+$/.test(input)) {
         return `Please only use numbers for your employee ID`
       } else {
@@ -74,9 +77,13 @@ const managerQsArray = [{
     message: `Manager office number:`,
     name: 'officeNumber',
     validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an office number
       if (input === '') {
         return `You must enter your office number `;
       }
+
+      // check office number is only made of numbers
       if (!/^\d+$/.test(input)) {
         return 'Please only use numbers'
       } else {
@@ -86,36 +93,6 @@ const managerQsArray = [{
   },
 
 ]
-
-const options = {
-  type: 'list',
-  message: 'What would you like to do next?',
-  name: 'nextStep',
-  choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
-}
-
-function chooseOptions() {
-  inquirer.prompt(options)
-    .then(optionAnswer => {
-      if (optionAnswer.nextStep === 'Add an Engineer') {
-
-        // calls Engineer questions function
-        engineerQuestions()
-
-      } else if (optionAnswer.nextStep === 'Add an Intern') {
-
-        // calls Intern questions function
-        internQuestions()
-
-      } else {
-        // end questions and generate team
-        console.log('Building team...')
-        // console.log(team)
-        writeToFile(team)
-      }
-    })
-
-}
 
 function managerQuestions() {
 
@@ -130,14 +107,40 @@ function managerQuestions() {
       console.log('Manager Added');
       console.log('--------------------')
 
-      // Push new Engineer to team array
+      // Push new Manager to team array
       team.push(newManager);
 
-      // call function to start chooseOptions inquirer
+      // call chooseOptions function to go back to options selection
       chooseOptions();
 
     })
 
+}
+
+const options = {
+  type: 'list',
+  message: 'What would you like to do next?',
+  name: 'nextStep',
+  choices: ['Add an Engineer', 'Add an Intern', 'Finish building the team']
+}
+
+function chooseOptions() {
+  inquirer.prompt(options)
+    .then(optionAnswer => {
+      // if user chooses to Add an Engineer then engineerQuestions function is called
+      if (optionAnswer.nextStep === 'Add an Engineer') {
+        engineerQuestions()
+      }
+      // if user chooses to Add an Intern then internQuestions function is called
+      else if (optionAnswer.nextStep === 'Add an Intern') {
+        internQuestions()
+      }
+      // If user chooses to Finish Building the team then the building team message is logged and the writeToFile funciton is called, passing in the team array
+      else {
+        console.log('Building team...')
+        writeToFile(team)
+      }
+    })
 }
 
 const engineerQsArray = [{
@@ -145,7 +148,7 @@ const engineerQsArray = [{
     message: `Please add the engineer's name`,
     name: 'engineerName',
     validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
+      // If the input is an empty string, alert that user must enter the engineer's name
       return input !== '' ? true : `You must enter the engineer's name`;
     }
   },
@@ -154,9 +157,12 @@ const engineerQsArray = [{
     message: `Please add the engineer's employee ID number`,
     name: 'engineerId',
     validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an employee number
       if (input === '') {
         return `You must enter the engineer's employee ID number`;
       }
+      // check that employee ID is only made of numbers
       if (!/^\d+$/.test(input)) {
         return `Please only use numbers for the engineer's employee ID`
       } else {
@@ -170,8 +176,7 @@ const engineerQsArray = [{
     name: 'engineerEmail',
     validate: function (input) {
 
-      // If the input is an empty string, alert that user must enter an employee number
-
+      // If the input is an empty string, alert that user must enter an employee email address
       if (input === '') {
         return `You must enter the engineer's email address`;
       }
@@ -192,7 +197,6 @@ const engineerQsArray = [{
     validate: function (input) {
 
       // If the input is an empty string, alert that user must enter a github username
-
       if (input === '') {
         return `You must enter the engineer's email address`;
       }
@@ -223,7 +227,7 @@ function engineerQuestions() {
       // Push new Engineer to team array
       team.push(newEngineer);
 
-      // call function to start chooseOptions inquirer
+      // call chooseOptions function to go back to options selection
       chooseOptions();
 
     })
@@ -237,7 +241,7 @@ const internQsArray = [
     message: `Please add the intern's name`,
     name: 'internName',
     validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
+      // If the input is an empty string, alert that user must enter the intern's name
       return input !== '' ? true : `You must enter the intern's name`;
     }
   },
@@ -246,9 +250,13 @@ const internQsArray = [
     message: `Please add the intern's employee ID number`,
     name: 'internId',
     validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an employee number
       if (input === '') {
         return `You must enter the intern's employee ID number `;
       }
+
+      // check that employee ID is only made of numbers
       if (!/^\d+$/.test(input)) {
         return `Please only use numbers for the intern's employee ID`
       } else {
@@ -280,7 +288,7 @@ const internQsArray = [
     message: `Please add the intern's School name`,
     name: 'internSchool',
     validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
+      // If the input is an empty string, alert that user must enter a school name
       return input !== '' ? true : `You must enter the Intern's school name`;
     }
   },
@@ -292,7 +300,7 @@ function internQuestions() {
   inquirer.prompt(internQsArray)
     .then(internAnswers => {
 
-      // create new Manager class with answers
+      // create new Intern class with answers
 
       const newIntern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool);
 
@@ -300,7 +308,7 @@ function internQuestions() {
       console.log('New Intern Created');
       console.log('--------------------')
 
-      // Push new Engineer to team array
+      // Push new Intern to team array
       team.push(newIntern);
 
       // call function to start chooseOptions inquirer
