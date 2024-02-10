@@ -13,22 +13,44 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-const newEmployee = new Employee('Name', 'id', 'email')
-const newManager = new Manager('Katie', '3456', 'katie@gmail.com', '0208 1234 5678');
-const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew182');
-
-newManager.printInfo();
-console.log(newManager.getRole())
-
+// newManager.printInfo();
+// console.log(newManager.getRole())
 
 
 const questions = [{
     type: 'input',
-    message: `Please enter your managers name`,
+    message: `Manager Name:`,
     name: 'managerName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your manager's name `;
+      return input !== '' ? true : `You must enter your name `;
+    }
+  },
+  {
+    type: 'input',
+    message: `Manager Employee ID: `,
+    name: 'managerId',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your employee ID`;
+    }
+  },
+  {
+    type: 'input',
+    message: `Manager Email:`,
+    name: 'managerEmail',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your email address `;
+    }
+  },
+  {
+    type: 'input',
+    message: `Manager Office Number:`,
+    name: 'officeNumber',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your office number `;
     }
   },
   {
@@ -111,7 +133,7 @@ const questions = [{
 // console.log(team)
 
 
-function writetoFile() {
+function writeToFile(team) {
 
   fs.writeFile(outputPath, (render(team)), (err) => {
     if (err) {
@@ -128,8 +150,15 @@ function init() {
   inquirer.prompt(questions)
     .then(answers => {
 
+      // const newEmployee = new Employee('Name', 'id', 'email')
+      const newManager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.officeNumber);
+      const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
       const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-      console.log(newIntern)
+
+      const team = [];
+      team.push(newManager, newEngineer, newIntern)
+
+      writeToFile(team)
 
     })
 
