@@ -33,7 +33,7 @@ const managerQsArray = [{
     name: 'managerName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your name `;
+      return input !== '' ? true : `You must enter your name`;
     }
   },
   {
@@ -68,7 +68,7 @@ const managerQsArray = [{
 
 const options = {
   type: 'list',
-  message: 'What do you want to do?',
+  message: 'What would you like to do next?',
   name: 'nextStep',
   choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
 }
@@ -123,21 +123,37 @@ const engineerQsArray = [{
     type: 'input',
     message: `Please add the Engineer's name`,
     name: 'engineerName',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your engineer's name`;
+    }
   },
   {
     type: 'input',
     message: `Please add the Engineer's ID`,
     name: 'engineerId',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your engineer's employee ID`;
+    }
   },
   {
     type: 'input',
     message: `Please add the Engineer's email address`,
     name: 'engineerEmail',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your engineer's email address`;
+    }
   },
   {
     type: 'input',
     message: `Please add the Engineer's GitHub username`,
     name: 'engineerGitHub',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your engineer's GitHub username`;
+    }
   },
 ]
 
@@ -170,21 +186,37 @@ const internQsArray = [
     type: 'input',
     message: `Please add the Intern's name`,
     name: 'internName',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your intern's name`;
+    }
   },
   {
     type: 'input',
     message: `Please add the Intern's ID`,
     name: 'internId',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your intern's employee ID`;
+    }
   },
   {
     type: 'input',
     message: `Please add the Intern's email address`,
     name: 'internEmail',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your intern's email address`;
+    }
   },
   {
     type: 'input',
     message: `Please add the Intern's School`,
     name: 'internSchool',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your Intern's school name`;
+    }
   },
 
 ];
