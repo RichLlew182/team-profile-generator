@@ -21,7 +21,7 @@ const newEngineer = new Engineer('Richard', '1234', 'rich@gmail.com', 'RichLlew1
 newManager.printInfo();
 console.log(newManager.getRole())
 
-const team = [newManager, newEngineer, newEmployee, newEmployee]
+const team = [newManager, newEngineer, newIntern, newEmployee]
 
 console.log(team)
 
