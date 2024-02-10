@@ -38,11 +38,17 @@ const managerQsArray = [{
   },
   {
     type: 'input',
-    message: `Manager Employee ID: `,
+    message: `Manager Employee ID Number: `,
     name: 'managerId',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your employee ID`;
+    validate: function (input) {
+      if (input === '') {
+        return `You must enter your employee ID number `;
+      }
+      if (!/^\d+$/.test(input)) {
+        return 'Please only use numbers for your employee ID'
+      } else {
+        return true;
+      }
     }
   },
   {
@@ -58,9 +64,15 @@ const managerQsArray = [{
     type: 'input',
     message: `Manager Office Number:`,
     name: 'officeNumber',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your office number `;
+    validate: function (input) {
+      if (input === '') {
+        return `You must enter your office number `;
+      }
+      if (!/^\d+$/.test(input)) {
+        return 'Please only use numbers'
+      } else {
+        return true;
+      }
     }
   },
 
@@ -121,7 +133,7 @@ function managerQuestions() {
 
 const engineerQsArray = [{
     type: 'input',
-    message: `Please add the Engineer's name`,
+    message: `Please add the engineer's name`,
     name: 'engineerName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
@@ -130,16 +142,22 @@ const engineerQsArray = [{
   },
   {
     type: 'input',
-    message: `Please add the Engineer's ID`,
+    message: `Please add the engineer's employee ID number`,
     name: 'engineerId',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your engineer's employee ID`;
+    validate: function (input) {
+      if (input === '') {
+        return `You must enter your engineer's employee ID number `;
+      }
+      if (!/^\d+$/.test(input)) {
+        return `Please only use numbers for your engineer's employee ID`
+      } else {
+        return true;
+      }
     }
   },
   {
     type: 'input',
-    message: `Please add the Engineer's email address`,
+    message: `Please add the engineer's email address`,
     name: 'engineerEmail',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
@@ -148,7 +166,7 @@ const engineerQsArray = [{
   },
   {
     type: 'input',
-    message: `Please add the Engineer's GitHub username`,
+    message: `Please add the engineer's GitHub username`,
     name: 'engineerGitHub',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
@@ -184,7 +202,7 @@ const internQsArray = [
 
   {
     type: 'input',
-    message: `Please add the Intern's name`,
+    message: `Please add the intern's name`,
     name: 'internName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
@@ -193,16 +211,22 @@ const internQsArray = [
   },
   {
     type: 'input',
-    message: `Please add the Intern's ID`,
+    message: `Please add the intern's employee ID number`,
     name: 'internId',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your intern's employee ID`;
+    validate: function (input) {
+      if (input === '') {
+        return `You must enter your intern's employee ID number `;
+      }
+      if (!/^\d+$/.test(input)) {
+        return `Please only use numbers for your intern's employee ID`
+      } else {
+        return true;
+      }
     }
   },
   {
     type: 'input',
-    message: `Please add the Intern's email address`,
+    message: `Please add the intern's email address`,
     name: 'internEmail',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
@@ -211,7 +235,7 @@ const internQsArray = [
   },
   {
     type: 'input',
-    message: `Please add the Intern's School`,
+    message: `Please add the intern's School name`,
     name: 'internSchool',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
