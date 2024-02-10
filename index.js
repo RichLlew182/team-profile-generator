@@ -54,9 +54,19 @@ const managerQsArray = [{
     type: 'input',
     message: `Manager Email:`,
     name: 'managerEmail',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your email address `;
+    validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an email address
+      if (input === '') {
+        return `You must enter your email address`;
+      }
+
+      // check if email is a valid email address
+      else if (!/\S+@\S+\.\S+/.test(input)) {
+        return `You must enter a valid email address`
+      } else {
+        return true;
+      }
     }
   },
   {
@@ -136,7 +146,7 @@ const engineerQsArray = [{
     name: 'engineerName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your engineer's name`;
+      return input !== '' ? true : `You must enter the engineer's name`;
     }
   },
   {
@@ -145,10 +155,10 @@ const engineerQsArray = [{
     name: 'engineerId',
     validate: function (input) {
       if (input === '') {
-        return `You must enter your engineer's employee ID number `;
+        return `You must enter the engineer's employee ID number`;
       }
       if (!/^\d+$/.test(input)) {
-        return `Please only use numbers for your engineer's employee ID`
+        return `Please only use numbers for the engineer's employee ID`
       } else {
         return true;
       }
@@ -158,18 +168,30 @@ const engineerQsArray = [{
     type: 'input',
     message: `Please add the engineer's email address`,
     name: 'engineerEmail',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your engineer's email address`;
+    validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an employee number
+
+      if (input === '') {
+        return `You must enter your engineer's email address`;
+      }
+
+      // check if email is a valid email address
+      else if (!/\S+@\S+\.\S+/.test(input)) {
+        return `You must enter a valid email address`
+      } else {
+        return true;
+      }
     }
+
   },
   {
     type: 'input',
     message: `Please add the engineer's GitHub username`,
     name: 'engineerGitHub',
     validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your engineer's GitHub username`;
+      // If the input is an empty string, alert that user must enter a Github username
+      return input !== '' ? true : `You must enter the engineer's GitHub username`;
     }
   },
 ]
@@ -205,7 +227,7 @@ const internQsArray = [
     name: 'internName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your intern's name`;
+      return input !== '' ? true : `You must enter the intern's name`;
     }
   },
   {
@@ -214,10 +236,10 @@ const internQsArray = [
     name: 'internId',
     validate: function (input) {
       if (input === '') {
-        return `You must enter your intern's employee ID number `;
+        return `You must enter the intern's employee ID number `;
       }
       if (!/^\d+$/.test(input)) {
-        return `Please only use numbers for your intern's employee ID`
+        return `Please only use numbers for the intern's employee ID`
       } else {
         return true;
       }
@@ -227,9 +249,19 @@ const internQsArray = [
     type: 'input',
     message: `Please add the intern's email address`,
     name: 'internEmail',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your intern's email address`;
+    validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter an email address
+      if (input === '') {
+        return `You must enter the intern's email address`;
+      }
+
+      // check if email is a valid email address
+      else if (!/\S+@\S+\.\S+/.test(input)) {
+        return `You must enter a valid email address`
+      } else {
+        return true;
+      }
     }
   },
   {
@@ -238,7 +270,7 @@ const internQsArray = [
     name: 'internSchool',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your Intern's school name`;
+      return input !== '' ? true : `You must enter the Intern's school name`;
     }
   },
 
