@@ -17,81 +17,9 @@ const render = require("./src/page-template.js");
 // console.log(newManager.getRole())
 
 
+const team = [];
+
 const questions = [
-  // {
-  //   type: 'input',
-  //   message: `Manager Name:`,
-  //   name: 'managerName',
-  //   validate: (input) => {
-  //     // If the input is an empty string, alert that user must enter a title
-  //     return input !== '' ? true : `You must enter your name `;
-  //   }
-  // },
-  // {
-  //   type: 'input',
-  //   message: `Manager Employee ID: `,
-  //   name: 'managerId',
-  //   validate: (input) => {
-  //     // If the input is an empty string, alert that user must enter a title
-  //     return input !== '' ? true : `You must enter your employee ID`;
-  //   }
-  // },
-  // {
-  //   type: 'input',
-  //   message: `Manager Email:`,
-  //   name: 'managerEmail',
-  //   validate: (input) => {
-  //     // If the input is an empty string, alert that user must enter a title
-  //     return input !== '' ? true : `You must enter your email address `;
-  //   }
-  // },
-  // {
-  //   type: 'input',
-  //   message: `Manager Office Number:`,
-  //   name: 'officeNumber',
-  //   validate: (input) => {
-  //     // If the input is an empty string, alert that user must enter a title
-  //     return input !== '' ? true : `You must enter your office number `;
-  //   }
-  // },
-  // {
-  //   type: 'list',
-  //   message: 'What do you want to do?',
-  //   name: 'nextStep',
-  //   choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
-  // },
-  {
-    type: 'input',
-    message: `Please add the Engineer's name`,
-    name: 'engineerName',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Engineer'
-    },
-  },
-  {
-    type: 'input',
-    message: `Please add the Engineer's ID`,
-    name: 'engineerId',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Engineer'
-    },
-  },
-  {
-    type: 'input',
-    message: `Please add the Engineer's email address`,
-    name: 'engineerEmail',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Engineer'
-    },
-  },
-  {
-    type: 'input',
-    message: `Please add the Engineer's GitHub username`,
-    name: 'engineerGitHub',
-    when: (answers) => {
-      return answers.nextStep === 'Add an Engineer'
-    },
-  },
 
   {
     type: 'input',
@@ -153,11 +81,11 @@ function init() {
 
       // const newEmployee = new Employee('Name', 'id', 'email')
       // const newManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
-      const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+      // const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
       const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
 
       const team = [];
-      team.push(newManager, newEngineer, newIntern)
+      // team.push(newManager, newEngineer, newIntern)
 
       writeToFile(team)
 
@@ -217,10 +145,9 @@ function chooseOptions() {
   inquirer.prompt(pickOptions)
     .then(optionAnswer => {
       if (optionAnswer.nextStep === 'Add an Engineer') {
-        // Ask Engineer questions
-        // Create New Engineer Class
-        // call chooseOptions function again to ask about more team members
-        console.log('New Engineer Created')
+        // calls Engineer questions function
+        engineerQuestions()
+
       } else if (optionAnswer.nextStep === 'Add an Intern') {
         // Ask Intern questions
         // Create New Intern Class
@@ -243,7 +170,57 @@ function managerQuestions() {
 
       const newManager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.officeNumber);
 
-      console.log(newManager)
+      console.log('Manager Added');
+      console.log('--------------------')
+
+      // Push new Engineer to team array
+      team.push(JSON.stringify(newManager));
+      console.log('Team so far: ' + team)
+      // call function to start chooseOptions inquirer
+
+      chooseOptions();
+
+    })
+
+}
+
+const engineerQsArray = [{
+    type: 'input',
+    message: `Please add the Engineer's name`,
+    name: 'engineerName',
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's ID`,
+    name: 'engineerId',
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's email address`,
+    name: 'engineerEmail',
+  },
+  {
+    type: 'input',
+    message: `Please add the Engineer's GitHub username`,
+    name: 'engineerGitHub',
+  },
+]
+
+function engineerQuestions() {
+
+  inquirer.prompt(engineerQsArray)
+    .then(engineerAnswers => {
+
+      // create new Engineer class with answers
+
+      const newEngineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.engineerGitHub);
+      // console.log(newEngineer)
+      console.log('New Engineer Created')
+      console.log('--------------------')
+
+      // Push new Engineer to team array
+      team.push(JSON.stringify(newEngineer));
+      console.log('Team so far: ' + team)
 
       // call function to start chooseOptions inquirer
 
@@ -253,6 +230,6 @@ function managerQuestions() {
 
 }
 
-managerQuestions()
 
-// chooseOptions();
+
+managerQuestions()
