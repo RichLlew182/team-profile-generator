@@ -17,48 +17,49 @@ const render = require("./src/page-template.js");
 // console.log(newManager.getRole())
 
 
-const questions = [{
-    type: 'input',
-    message: `Manager Name:`,
-    name: 'managerName',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your name `;
-    }
-  },
-  {
-    type: 'input',
-    message: `Manager Employee ID: `,
-    name: 'managerId',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your employee ID`;
-    }
-  },
-  {
-    type: 'input',
-    message: `Manager Email:`,
-    name: 'managerEmail',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your email address `;
-    }
-  },
-  {
-    type: 'input',
-    message: `Manager Office Number:`,
-    name: 'officeNumber',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a title
-      return input !== '' ? true : `You must enter your office number `;
-    }
-  },
-  {
-    type: 'list',
-    message: 'What do you want to do?',
-    name: 'nextStep',
-    choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
-  },
+const questions = [
+  // {
+  //   type: 'input',
+  //   message: `Manager Name:`,
+  //   name: 'managerName',
+  //   validate: (input) => {
+  //     // If the input is an empty string, alert that user must enter a title
+  //     return input !== '' ? true : `You must enter your name `;
+  //   }
+  // },
+  // {
+  //   type: 'input',
+  //   message: `Manager Employee ID: `,
+  //   name: 'managerId',
+  //   validate: (input) => {
+  //     // If the input is an empty string, alert that user must enter a title
+  //     return input !== '' ? true : `You must enter your employee ID`;
+  //   }
+  // },
+  // {
+  //   type: 'input',
+  //   message: `Manager Email:`,
+  //   name: 'managerEmail',
+  //   validate: (input) => {
+  //     // If the input is an empty string, alert that user must enter a title
+  //     return input !== '' ? true : `You must enter your email address `;
+  //   }
+  // },
+  // {
+  //   type: 'input',
+  //   message: `Manager Office Number:`,
+  //   name: 'officeNumber',
+  //   validate: (input) => {
+  //     // If the input is an empty string, alert that user must enter a title
+  //     return input !== '' ? true : `You must enter your office number `;
+  //   }
+  // },
+  // {
+  //   type: 'list',
+  //   message: 'What do you want to do?',
+  //   name: 'nextStep',
+  //   choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
+  // },
   {
     type: 'input',
     message: `Please add the Engineer's name`,
@@ -164,4 +165,68 @@ function init() {
 
 }
 
-init();
+// init();
+
+const managerQuestions = [{
+    type: 'input',
+    message: `Manager Name:`,
+    name: 'managerName',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your name `;
+    }
+  },
+  {
+    type: 'input',
+    message: `Manager Employee ID: `,
+    name: 'managerId',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your employee ID`;
+    }
+  },
+  {
+    type: 'input',
+    message: `Manager Email:`,
+    name: 'managerEmail',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your email address `;
+    }
+  },
+  {
+    type: 'input',
+    message: `Manager Office Number:`,
+    name: 'officeNumber',
+    validate: (input) => {
+      // If the input is an empty string, alert that user must enter a title
+      return input !== '' ? true : `You must enter your office number `;
+    }
+  },
+
+]
+
+const pickOptions = {
+  type: 'list',
+  message: 'What do you want to do?',
+  name: 'nextStep',
+  choices: ['Add an Engineer', 'Add an Intern', 'Finish Building the team']
+}
+
+function chooseOptions() {
+  inquirer.prompt(pickOptions)
+    .then(optionAnswer => {
+      if (optionAnswer.nextStep === 'Add an Engineer') {
+        // Create new Engineer
+        console.log('New Engineer Created')
+      } else if (optionAnswer.nextStep === 'Add an Intern') {
+        console.log('New Intern Created')
+      } else {
+        // end questions and generate team
+        console.log('Questions over, generating team')
+      }
+    })
+
+}
+
+chooseOptions();
