@@ -28,7 +28,7 @@ function writeToFile(team) {
 
 const managerQsArray = [{
     type: 'input',
-    message: `Manager Name:`,
+    message: `Manager name:`,
     name: 'managerName',
     validate: (input) => {
       // If the input is an empty string, alert that user must enter a title
@@ -37,14 +37,14 @@ const managerQsArray = [{
   },
   {
     type: 'input',
-    message: `Manager Employee ID Number: `,
+    message: `Manager employee ID number: `,
     name: 'managerId',
     validate: function (input) {
       if (input === '') {
         return `You must enter your employee ID number `;
       }
       if (!/^\d+$/.test(input)) {
-        return 'Please only use numbers for your employee ID'
+        return `Please only use numbers for your employee ID`
       } else {
         return true;
       }
@@ -52,7 +52,7 @@ const managerQsArray = [{
   },
   {
     type: 'input',
-    message: `Manager Email:`,
+    message: `Manager email address:`,
     name: 'managerEmail',
     validate: function (input) {
 
@@ -71,7 +71,7 @@ const managerQsArray = [{
   },
   {
     type: 'input',
-    message: `Manager Office Number:`,
+    message: `Manager office number:`,
     name: 'officeNumber',
     validate: function (input) {
       if (input === '') {
@@ -173,7 +173,7 @@ const engineerQsArray = [{
       // If the input is an empty string, alert that user must enter an employee number
 
       if (input === '') {
-        return `You must enter your engineer's email address`;
+        return `You must enter the engineer's email address`;
       }
 
       // check if email is a valid email address
@@ -189,9 +189,20 @@ const engineerQsArray = [{
     type: 'input',
     message: `Please add the engineer's GitHub username`,
     name: 'engineerGitHub',
-    validate: (input) => {
-      // If the input is an empty string, alert that user must enter a Github username
-      return input !== '' ? true : `You must enter the engineer's GitHub username`;
+    validate: function (input) {
+
+      // If the input is an empty string, alert that user must enter a github username
+
+      if (input === '') {
+        return `You must enter the engineer's email address`;
+      }
+
+      // check if username is valid (no underscores)
+      else if (!/^[a-zA-Z0-9-]+$/.test(input)) {
+        return `You must enter a valid GitHub username`
+      } else {
+        return true;
+      }
     }
   },
 ]
