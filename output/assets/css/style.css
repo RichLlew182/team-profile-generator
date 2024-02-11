@@ -1,0 +1,55 @@
+body {
+  background-color: #F0F3FF;
+  min-height: 100vh;
+  font-family: 'Albert Sans';
+  font-weight: 300;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+}
+
+.jumbotron {
+  background: #211951;
+  color: white;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.team-area {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.Employee-card {
+  min-width: 300px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
+  max-width: 33.3333333%;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.card-header {
+  background-color: #836FFF;
+  color: white;
+  padding: 1.25rem 1.5rem;
+}
+
+.card-header:first-child {
+  border-radius: calc(0.5rem - 0px) calc(0.5rem - 0px) 0 0;
+}
+
+.Employee-card a {
+  color: #0cc494;
+  font-weight: 400;
+}
+
+h2.card-title {
+  text-transform: capitalize;
+}
