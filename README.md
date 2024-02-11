@@ -116,7 +116,7 @@ Richard Llewellyn - richard.lee.llewellyn@gmail.com
 
 Project Repo Link: [https://github.com/RichLlew182/team-profile-generator](https://github.com/RichLlew182/team-profile-generator)
 
-Sample HTML Link: 
+Sample HTML Link: [https://github.com/RichLlew182/team-profile-generator/blob/main/output/team.html](https://github.com/RichLlew182/team-profile-generator/blob/main/output/team.html)
 
 
 <!-- ACKNOWLEDGMENTS -->
